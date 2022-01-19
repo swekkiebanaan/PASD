@@ -25,6 +25,7 @@ class ProductController extends Controller
                 'vat_rate'=> $bing->vat_rate,
                 'price_in_cents'=> $bing->price_in_cents,
                 'quantity'=> 0,
+                'image'=> '',
             ]);
 
         }
@@ -32,18 +33,20 @@ class ProductController extends Controller
     public function productCreate(Request $request){
         $product = Product::create([
 
-            'product_id'=>$request->get('id'),
+            'product_id'=>$request->get('product_id'),
             'name'=> $request->get('name'),
             'EAN_13'=> $request->get('EAN_13'),
             'vat_rate'=> $request->get('vat_rate'),
             'price_in_cents'=> $request->get('price_in_cents'),
             'quantity'=> $request->get('quantity'),
+            'image'=>$request->get('image'),
         ]);
 
         return $product;
     }
     public function productUpdate(Request $request, Product $product){
-        $product->update([
+        $var = $product->update([
+
 
             'product_id'=>$request->get('id'),
             'name'=> $request->get('name'),
@@ -53,8 +56,7 @@ class ProductController extends Controller
             'quantity'=> $request->get('quantity'),
 
         ]);
-
-        return $product;
+        return $var;
     }
     public function productRemove(Product $product){
         $product->delete();

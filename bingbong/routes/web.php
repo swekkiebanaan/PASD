@@ -21,8 +21,8 @@ use Inertia\Inertia;
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/get-products',[ProductController::class, 'gibProducts']);
-Route::delete('/remove-products',[ProductController::class, 'productRemove']);
-Route::post('/update-products',[ProductController::class, 'productUpdate']);
+Route::delete('/remove-products/{product}',[ProductController::class, 'productRemove']);
+Route::post('/update-products/{product}',[ProductController::class, 'productUpdate']);
 Route::post('/create-products',[ProductController::class, 'productCreate']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

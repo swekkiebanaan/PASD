@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->float('vat_rate');
             $table->integer('price_in_cents');
             $table->integer('quantity')->default(0);
+            $table->string('image');
             $table->timestamps();
         });
     }
